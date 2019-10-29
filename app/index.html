@@ -3,10 +3,36 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <body>
 
-<div ng-app="">
-  <p>Name : <input type="text" ng-model="name"></p>
-  <h1>Hello {{name}}</h1>
+<ngx-charts-line-chart
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="multi"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        [autoScale]="autoScale"
+        [timeline]="timeline"
+        (select)="onSelect($event)">
+</ngx-charts-line-chart>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+  <p>First Name : <input type="text" ng-model="firstName"></p>
+  <p>Last Name  : <input type="text" ng-model="lastName"></p>
+  <h1>Hello {{firstName + " " + lastName}}</h1>
 </div>
+
+<script>
+  var app = angular.module("myApp", []);
+  app.controller("myCtrl", function($scope) {
+    $scope.firstName = "";
+    $scope.lastName = "";
+  });
+</script>
 
 </body>
 </html>
