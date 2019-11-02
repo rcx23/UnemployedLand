@@ -13,15 +13,18 @@ am4core.useTheme(am4themes_animated);
 export class AppComponent {
   title = 'the-land';
 
-  private chart: am4charts.XYChart;
+  private chartLine: am4charts.XYChart;
+  private chartBar: am4charts.XYChart;
+  private chartTiming: am4charts.PieChart;
 
   constructor(private zone: NgZone) {}
 
   ngAfterViewInit() {
     this.zone.runOutsideAngular(() => {
-      let chart = am4core.create('chartdiv', am4charts.XYChart);
+      // Line Chart
+      let chartLine = am4core.create('chartdiv', am4charts.XYChart);
 
-      chart.paddingRight = 20;
+      chartLine.paddingRight = 20;
 
       let data = [];
       let visits = 10;
@@ -30,34 +33,139 @@ export class AppComponent {
         data.push({ date: new Date(2018, 0, i), name: 'name' + i, value: visits });
       }
 
-      chart.data = data;
+      chartLine.data = data;
 
-      let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-      dateAxis.renderer.grid.template.location = 0;
+      let dateAxisLine = chartLine.xAxes.push(new am4charts.DateAxis());
+      dateAxisLine.renderer.grid.template.location = 0;
 
-      let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-      valueAxis.tooltip.disabled = true;
-      valueAxis.renderer.minWidth = 35;
+      let valueAxisLine = chartLine.yAxes.push(new am4charts.ValueAxis());
+      valueAxisLine.tooltip.disabled = true;
+      valueAxisLine.renderer.minWidth = 35;
 
-      let series = chart.series.push(new am4charts.LineSeries());
-      series.dataFields.dateX = 'date';
-      series.dataFields.valueY = 'value';
+      let seriesLine = chartLine.series.push(new am4charts.LineSeries());
+      seriesLine.dataFields.dateX = 'date';
+      seriesLine.dataFields.valueY = 'value';
 
-      series.tooltipText = '{valueY.value}';
-      chart.cursor = new am4charts.XYCursor();
+      seriesLine.tooltipText = '{valueY.value}';
+      chartLine.cursor = new am4charts.XYCursor();
 
       let scrollbarX = new am4charts.XYChartScrollbar();
-      scrollbarX.series.push(series);
-      chart.scrollbarX = scrollbarX;
+      scrollbarX.series.push(seriesLine);
+      chartLine.scrollbarX = scrollbarX;
 
-      this.chart = chart;
+      this.chartLine = chartLine;
+
+
+      // Bar graph
+      let chartBar = am4core.create('chartBar', am4charts.XYChart);
+
+      chartBar.data = [{
+        platform: 'Facebook',
+        visits: 31
+      }, {
+        platform: 'Instagram',
+        visits: 53
+      }, {
+        platform: 'Twitter',
+        visits: 28
+      }, {
+        platform: 'LinkedIn',
+        visits: 20
+      }, {
+        platform: 'Text',
+        visits: 42
+      }, {
+        platform: 'Email',
+        visits: 6
+      }, {
+        platform: 'WhatsApp',
+        visits: 15
+      },{
+        platform: 'Messenger',
+        visits: 12
+      }, {
+        platform: 'Pinterest',
+        visits: 4
+      }];
+
+      const barAxis = chartBar.xAxes.push(new am4charts.CategoryAxis());
+      barAxis.dataFields.category = 'platform';
+      barAxis.renderer.grid.template.location = 0;
+      barAxis.renderer.minGridDistance = 30;
+
+      barAxis.renderer.labels.template.adapter.add('dy', function(dy, target) {
+        if (target.dataItem && target.dataItem.index & 2 == 2) {
+          return dy + 25;
+        }
+        return dy;
+      });
+
+      let valueAxis = chartBar.yAxes.push(new am4charts.ValueAxis());
+
+// Create series
+      let seriesBar = chartBar.series.push(new am4charts.ColumnSeries());
+      seriesBar.dataFields.valueY = 'visits';
+      seriesBar.dataFields.categoryX = 'platform';
+      seriesBar.name = 'Visits';
+      seriesBar.columns.template.tooltipText = '{categoryX}: [bold]{valueY}[/]';
+      seriesBar.columns.template.fillOpacity = .8;
+
+      const columnTemplate = seriesBar.columns.template;
+      columnTemplate.strokeWidth = 2;
+      columnTemplate.strokeOpacity = 1;
+
+      //Timing Chart
+      let chartTiming = am4core.create('chartTiming', am4charts.PieChart)
+
+      chartTiming.data = [{
+        time: '0-5 Minutes',
+        value: '14.8%'
+      }, {
+        time: '5-20 Minutes',
+        value: '29.2%'
+      }, {
+        time: '20-60 Minutes',
+        value: '10.5%'
+      }, {
+        time: '60-120 Minutes',
+        value: '7.6%'
+      }, {
+        time: '>120 Minutes',
+        value: '37.6%'
+      }];
+
+      let timingSeries = chartTiming.series.push(new am4charts.PieSeries());
+      timingSeries.dataFields.value = 'value';
+      timingSeries.dataFields.category = 'time';
+      timingSeries.innerRadius = am4core.percent(50);
+      timingSeries.ticks.template.disabled = true;
+      timingSeries.labels.template.disabled = true;
+
+      let rgm = new am4core.RadialGradientModifier();
+      rgm.brightnesses.push(-0.8, -0.8, -0.5, 0, - 0.5);
+      timingSeries.slices.template.fillModifier = rgm;
+      timingSeries.slices.template.strokeModifier = rgm;
+      timingSeries.slices.template.strokeOpacity = 0.4;
+      timingSeries.slices.template.strokeWidth = 0;
+
+      chartTiming.legend = new am4charts.Legend();
+      chartTiming.legend.position = 'right';
+
     });
   }
 
   ngOnDestroy() {
     this.zone.runOutsideAngular(() => {
-      if (this.chart) {
-        this.chart.dispose();
+      if (this.chartLine) {
+        this.chartLine.dispose();
+      }
+
+      if (this.chartBar) {
+        this.chartBar.dispose();
+      }
+
+      if (this.chartTiming){
+        this.chartTiming.dispose();
       }
     });
   }
