@@ -94,7 +94,7 @@ export class AppComponent {
       barAxis.renderer.minGridDistance = 30;
 
       barAxis.renderer.labels.template.adapter.add('dy', function(dy, target) {
-        if (target.dataItem && target.dataItem.index & 2 == 2) {
+        if (target.dataItem && target.dataItem.index as Number & 2 == 2) {
           return dy + 25;
         }
         return dy;
