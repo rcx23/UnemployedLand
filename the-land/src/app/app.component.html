@@ -38,7 +38,7 @@
     margin: -8px;
     display: flex;
     align-items: center;
-    background-color: #6b8ffe;
+    background-color: #6b8f8f;
     color: white;
     font-weight: 600;
   }
@@ -68,12 +68,20 @@
   }
   .viewer{
     width:33.33%;
-	float:right;
+  }
+  
+  .viewer h4{
+    width:max-content;
   }
   .data{
     width:33.33%;
 	float:left;
   }
+  @media only screen and (max-width: 800px) {
+  .data {
+   width:100%;
+  }
+}
   .header{
     display: flex;
     margin: 32px auto;
@@ -331,6 +339,7 @@
     
 </div>
 <div class="header" >
+  <img id="theland" src="assets/images/theland.jpg" alt="theland" width="150" height="70">
   <h2>Viewer Statistics</h2>
 </div>
 <div class="data">
@@ -355,13 +364,13 @@
 	  <img id="p" src="assets/images/p.jpg" alt="p" width="20" height="20">
   </div>
   <div class="viewer">
-    <p>Views: 1.3M</p>
+    <h4>Views: 1.3M</h4>
   </div>
   <div class="viewer">
-     <p>Sales: $330K</p>
+     <h4>Sales: $330K</h4>
   </div>
   <div class="viewer">
-	<p>Engagement: 22%</p>
+	<h4>Engagement: 22%</h4>
   </div>
   
 </div>
@@ -378,10 +387,10 @@
 	   <img id="usFlag" src="assets/images/us.jpg" alt="us percentage" width="50" height="40">
 	  80% 
 	  <br>
-	  <img id="canadaFlag" src="assets/images/canada.jpg" alt="canada percentage" width="5" height="40">
+	  <img id="canadaFlag" src="assets/images/canada.jpg" alt="canada percentage" width="50" height="40">
 	  8.0% 
 	  <br>
-	  <img id="brazilFlag" src="assets/images/brazil.jpg" alt="brazil percentage" width="40" height="40">
+	  <img id="brazilFlag" src="assets/images/brazil.jpg" alt="brazil percentage" width="50" height="40">
 	  12% 
 	  
 </div>
