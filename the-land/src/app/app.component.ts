@@ -1,9 +1,18 @@
-import { Component, NgZone } from '@angular/core';
+import {Component, NgModule, NgZone} from '@angular/core';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
+import {MatTabsModule} from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserModule} from '@angular/platform-browser';
 
 am4core.useTheme(am4themes_animated);
+
+@NgModule({
+  imports:      [ BrowserModule, BrowserAnimationsModule, MatTabsModule ],
+  declarations: [ AppComponent ],
+  bootstrap:    [ AppComponent ]
+})
 
 @Component({
   selector: 'app-root',
