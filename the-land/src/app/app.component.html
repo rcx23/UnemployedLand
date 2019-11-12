@@ -91,7 +91,7 @@
     align-items: center;
   }
   .card-container{
-    display:
+    display: flex;
   }
   svg.material-icons {
     height: 24px;
@@ -256,6 +256,25 @@
     align-items: center;
   }
 
+  .example-small-box, .example-large-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 8px;
+  }
+
+  .example-small-box {
+    height: 100px;
+    width: 100px;
+  }
+
+  .example-large-box {
+    height: 300px;
+    width: 300px;
+  }
+
   .github-star-badge {
     color: #24292e;
     display: flex;
@@ -414,23 +433,19 @@
   </div>
 
   <!-- Links -->
-  <mat-tab-group>
-
-    <mat-tab label="One">
-      <div>
-        <h1>Some tab content</h1>
-        <p>...</p>
+  <mat-tab-group dynamicHeight>
+    <mat-tab label="Short tab">
+      <div class="example-small-box mat-elevation-z4">
+        Small content
       </div>
     </mat-tab>
-
-    <mat-tab label="Two">
-      <div>
-        <h1>Some more tab content</h1>
-        <p>...</p>
+    <mat-tab label="Long tab">
+      <div class="example-large-box mat-elevation-z4">
+        Large content
       </div>
     </mat-tab>
-
   </mat-tab-group>
+
   <!-- Footer -->
   <footer>
 

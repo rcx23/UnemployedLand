@@ -5,11 +5,12 @@ import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import {MatTabsModule} from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
+import {RouterModule} from '@angular/router';
 
 am4core.useTheme(am4themes_animated);
 
 @NgModule({
-  imports:      [ BrowserModule, BrowserAnimationsModule, MatTabsModule ],
+  imports: [BrowserModule, BrowserAnimationsModule, MatTabsModule, RouterModule],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ]
 })
@@ -19,6 +20,8 @@ am4core.useTheme(am4themes_animated);
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
+
 export class AppComponent {
   title = 'the-land';
 
