@@ -32,9 +32,10 @@ export class AppComponent {
   private chartBar: am4charts.XYChart;
   private chartTiming: am4charts.PieChart;
 
-@ViewChild('chartDiv') chartDiv: ElementRef<HTMLElement>;
-@ViewChild('chartBar') chartBar1: ElementRef<HTMLElement>;
+@ViewChild('chartDiv', {static: true}) chartDiv: ElementRef<HTMLElement>;
+@ViewChild('chartBar', {static: true}) chartBar1: ElementRef<HTMLElement>;
   constructor(private zone: NgZone) {}
+  
 
   ngAfterViewInit() {
     this.zone.runOutsideAngular(() => {
