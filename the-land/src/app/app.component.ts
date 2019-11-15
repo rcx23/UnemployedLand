@@ -1,4 +1,4 @@
-import {Component,ViewChild, NgModule, NgZone} from '@angular/core';
+import {Component, ViewChild, NgModule, NgZone, ElementRef} from '@angular/core';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
@@ -26,11 +26,12 @@ export class AppModule {}
 
 
 export class AppComponent {
-	
+
   title = 'the-land';
   private chartLine: am4charts.XYChart;
   private chartBar: am4charts.XYChart;
   private chartTiming: am4charts.PieChart;
+
 @ViewChild('chartDiv') chartDiv: ElementRef<HTMLElement>;
 @ViewChild('chartBar') chartBar1: ElementRef<HTMLElement>;
   constructor(private zone: NgZone) {}
@@ -38,12 +39,12 @@ export class AppComponent {
   ngAfterViewInit() {
     this.zone.runOutsideAngular(() => {
       // Line Chart
-	  
-      let chartLine = am4core.create(this.chartDiv.nativeElement, am4charts.XYChart);
+
+      const chartLine = am4core.create(this.chartDiv.nativeElement, am4charts.XYChart);
 
       chartLine.paddingRight = 20;
 
-      let data = [];
+      const data = [];
       let visits = 10;
       for (let i = 1; i < 366; i++) {
         visits += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
@@ -52,21 +53,21 @@ export class AppComponent {
 
       chartLine.data = data;
 
-      let dateAxisLine = chartLine.xAxes.push(new am4charts.DateAxis());
+      const dateAxisLine = chartLine.xAxes.push(new am4charts.DateAxis());
       dateAxisLine.renderer.grid.template.location = 0;
 
-      let valueAxisLine = chartLine.yAxes.push(new am4charts.ValueAxis());
+      const valueAxisLine = chartLine.yAxes.push(new am4charts.ValueAxis());
       valueAxisLine.tooltip.disabled = true;
       valueAxisLine.renderer.minWidth = 35;
 
-      let seriesLine = chartLine.series.push(new am4charts.LineSeries());
+      const seriesLine = chartLine.series.push(new am4charts.LineSeries());
       seriesLine.dataFields.dateX = 'date';
       seriesLine.dataFields.valueY = 'value';
 
       seriesLine.tooltipText = '{valueY.value}';
       chartLine.cursor = new am4charts.XYCursor();
 
-      let scrollbarX = new am4charts.XYChartScrollbar();
+      const scrollbarX = new am4charts.XYChartScrollbar();
       scrollbarX.series.push(seriesLine);
       chartLine.scrollbarX = scrollbarX;
 
@@ -74,7 +75,7 @@ export class AppComponent {
 
 
       // Bar graph
-      let chartBar = am4core.create(this.chartBar1.nativeElement, am4charts.XYChart);
+      const chartBar = am4core.create(this.chartBar1.nativeElement, am4charts.XYChart);
 
       chartBar.data = [{
         platform: 'Facebook',
@@ -97,7 +98,7 @@ export class AppComponent {
       }, {
         platform: 'WhatsApp',
         visits: 15
-      },{
+      }, {
         platform: 'Messenger',
         visits: 12
       }, {
@@ -117,10 +118,10 @@ export class AppComponent {
         return dy;
       });
 
-      let valueAxis = chartBar.yAxes.push(new am4charts.ValueAxis());
+      const valueAxis = chartBar.yAxes.push(new am4charts.ValueAxis());
 
 // Create series
-      let seriesBar = chartBar.series.push(new am4charts.ColumnSeries());
+      const seriesBar = chartBar.series.push(new am4charts.ColumnSeries());
       seriesBar.dataFields.valueY = 'visits';
       seriesBar.dataFields.categoryX = 'platform';
       seriesBar.name = 'Visits';
@@ -131,8 +132,8 @@ export class AppComponent {
       columnTemplate.strokeWidth = 2;
       columnTemplate.strokeOpacity = 1;
 
-      //Timing Chart
-      let chartTiming = am4core.create('chartTiming', am4charts.PieChart)
+      // Timing Chart
+      const chartTiming = am4core.create('chartTiming', am4charts.PieChart);
 
       chartTiming.data = [{
         time: '0-5 Minutes',
@@ -151,14 +152,14 @@ export class AppComponent {
         value: '37.6%'
       }];
 
-      let timingSeries = chartTiming.series.push(new am4charts.PieSeries());
+      const timingSeries = chartTiming.series.push(new am4charts.PieSeries());
       timingSeries.dataFields.value = 'value';
       timingSeries.dataFields.category = 'time';
       timingSeries.innerRadius = am4core.percent(50);
       timingSeries.ticks.template.disabled = true;
       timingSeries.labels.template.disabled = true;
 
-      let rgm = new am4core.RadialGradientModifier();
+      const rgm = new am4core.RadialGradientModifier();
       rgm.brightnesses.push(-0.8, -0.8, -0.5, 0, - 0.5);
       timingSeries.slices.template.fillModifier = rgm;
       timingSeries.slices.template.strokeModifier = rgm;
@@ -181,7 +182,7 @@ export class AppComponent {
         this.chartBar.dispose();
       }
 
-      if (this.chartTiming){
+      if (this.chartTiming) {
         this.chartTiming.dispose();
       }
     });
