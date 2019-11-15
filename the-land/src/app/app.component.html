@@ -17,8 +17,7 @@
 		-moz-osx-font-smoothing: grayscale;
 	  }
 	  body{
-		color:black;
-		background:white;
+		background-color: #1a1a1a
 	  }
 	  h1,
 	  h2{
@@ -359,26 +358,35 @@
 
 	<div class="container">
 		<!-- Toolbar -->
-		<div class="toolbar" role="banner">
-		  <span>The Land Dashboard</span>
-			<div class="spacer"></div>
-
-		</div><div class="header" >
+		<div class="header" >
 		  <img id="theland" src="assets/images/theland.png" alt="theland" width="150" height="70">
-		  <h2>Viewer Statistics</h2>
+		  <h2 style="color: white">Viewer Statistics</h2>
 		</div>
 		<div class="row">
 
 			<div class="col">
 				<div class="data">
-
 					<div class="social-media">
-					  SHARE:
-					  <img id="fb" src="assets/images/fb.jpg" alt="fb" width="20" height="20">
-					  <img id="twitter" src="assets/images/twitter.jpg" alt="twitter" width="20" height="20">
-					  <img id="g+" src="assets/images/g.jpg" alt="g+" width="20" height="20">
-					  <img id="in" src="assets/images/in.jpg" alt="in" width="20" height="20">
-					  <img id="p" src="assets/images/p.jpg" alt="p" width="20" height="20">
+						<span>SHARE</span>:
+				     	<!-- Facebook -->
+			    		<a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
+			        		<img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+			    		</a>
+
+					 	<!-- Twitter -->
+					    <a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank">
+					        <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+					    </a>
+
+					    <!-- Google+ -->
+					    <a href="https://plus.google.com/share?url=https://simplesharebuttons.com" target="_blank">
+					        <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
+					    </a>
+
+					    <!-- LinkedIn -->
+					    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://simplesharebuttons.com" target="_blank">
+					        <img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" />
+					    </a>
 					</div>
 				</div>
 			</div>
@@ -423,8 +431,8 @@
 					</div>
 					<div class="col-6">
 						<div class="viewer">
-							<h4>128,000</h4>
-							<h4>total daily visits </h4>
+							<h4 style="color: grey">128,000</h4>
+							<h4 style="color: grey">total daily visits </h4>
 						</div>
 					</div>
 					<div class="col">
@@ -437,24 +445,24 @@
 				<div class="data">
 					<div class="row">
 						<img id="male" width="50" height="50" src="assets/images/male.jpg"/>
-						78%
+						<span>78%</span>
 					</div>
 					<div class="row">
 						<img id="female" src="assets/images/female.jpg" width="50" height="50"/>
-						22%
+						<span>22%</span>
 					</div>
 					<br>
 					<div class="row">
 						<img id="usFlag" src="assets/images/us.jpg" alt="us percentage" width="50" height="40">
-						 80%
+						<span>80%</span>
 					</div>
 					<div class="row">
 						<img id="canadaFlag" src="assets/images/canada.jpg" alt="canda percentage" width="50" height="40">
-						 8.0%
+						<span>8.0%</span>
 					</div>
 					<div class="row">
 						<img id="brazilFlag" src="assets/images/brazil.jpg" alt="brazil percentage" width="50" height="40">
-						 12%
+						<span>12%</span>
 					</div>
 				</div>
 			</div>
@@ -464,23 +472,27 @@
 
 	<div class="user-engagement">
 	  <!-- Resources -->
-		<h2>User Engagement</h2>
+		<h2 style="color: white">User Engagement</h2>
     <mat-tab-group>
-      <mat-tab label="Graph 1"><h2>User Time Breakdown:</h2>
-	  <div id="chartTiming" style="width: 100%; height: 400px"></div>
 
+      <mat-tab label="Graph 1">
+      	<h2 style="color: grey">User Time Breakdown:</h2>
+	  	<div id="chartTiming" style="width: 100%; height: 400px"></div>
 	  </mat-tab>
-      <mat-tab label="Graph 2"><h2>User Time 2:</h2>
-	  <h2>Time Spent</h2>
-	   
+
+      <mat-tab label="Graph 2">
+      	<h2 style="color: grey">User Time 2:</h2>
+	  	<h2 style="color: grey">Time Spent</h2>
 		<div id="chartDiv" style="width: 100%; height: 200px"  #chartDiv></div>
 		
 	  </mat-tab>
-      <mat-tab label="Graph 3"><h2>User Time 3:</h2>
-	  <h2>User Platforms</h2>
-		<div id="chartBar" style="width: 100%; height: 400px" #chartBar></div>
 
+      <mat-tab label="Graph 3">
+      	<h2 style="color: grey">User Time 3:</h2>
+	  	<h2 style="color: grey">User Platforms</h2>
+		<div id="chartBar" style="width: 100%; height: 400px" #chartBar></div>
 	  </mat-tab>
+
     </mat-tab-group>
 
 
@@ -500,10 +512,6 @@
 		<footer>
 
 		</footer>
-
-		<svg id="clouds" alt="Gray Clouds Background" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677" viewBox="0 0 2611.084 485.677">
-			<path id="Path_39" data-name="Path 39" d="M2379.709,863.793c10-93-77-171-168-149-52-114-225-105-264,15-75,3-140,59-152,133-30,2.83-66.725,9.829-93.5,26.25-26.771-16.421-63.5-23.42-93.5-26.25-12-74-77-130-152-133-39-120-212-129-264-15-54.084-13.075-106.753,9.173-138.488,48.9-31.734-39.726-84.4-61.974-138.487-48.9-52-114-225-105-264,15a162.027,162.027,0,0,0-103.147,43.044c-30.633-45.365-87.1-72.091-145.206-58.044-52-114-225-105-264,15-75,3-140,59-152,133-53,5-127,23-130,83-2,42,35,72,70,86,49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33,61.112,8.015,113.854-5.72,150.492-29.764a165.62,165.62,0,0,0,110.861-3.236c47,94,178,113,251,33,31.385,4.116,60.563,2.495,86.487-3.311,25.924,5.806,55.1,7.427,86.488,3.311,73,80,204,61,251-33a165.625,165.625,0,0,0,120,0c51,13,108,15,157-5a147.188,147.188,0,0,0,33.5-18.694,147.217,147.217,0,0,0,33.5,18.694c49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33C2446.709,1093.793,2554.709,922.793,2379.709,863.793Z" transform="translate(142.69 -634.312)" fill="#eee"/>
-		</svg>
 
 	</div>
 
