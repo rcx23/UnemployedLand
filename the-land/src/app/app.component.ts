@@ -1,4 +1,4 @@
-import {Component, NgModule, NgZone} from '@angular/core';
+import {Component,ViewChild, NgModule, NgZone} from '@angular/core';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
@@ -9,11 +9,13 @@ import {RouterModule} from '@angular/router';
 
 am4core.useTheme(am4themes_animated);
 
+export class AppModule {}
 @NgModule({
-  imports: [BrowserModule, BrowserAnimationsModule, MatTabsModule, RouterModule],
+  imports: [BrowserModule,   BrowserAnimationsModule, MatTabsModule, RouterModule],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ]
 })
+
 
 @Component({
   selector: 'app-root',
@@ -22,19 +24,22 @@ am4core.useTheme(am4themes_animated);
 })
 
 
-export class AppComponent {
-  title = 'the-land';
 
+export class AppComponent {
+	
+  title = 'the-land';
   private chartLine: am4charts.XYChart;
   private chartBar: am4charts.XYChart;
   private chartTiming: am4charts.PieChart;
-
+@ViewChild('chartDiv') chartDiv: ElementRef<HTMLElement>;
+@ViewChild('chartBar') chartBar1: ElementRef<HTMLElement>;
   constructor(private zone: NgZone) {}
 
   ngAfterViewInit() {
     this.zone.runOutsideAngular(() => {
       // Line Chart
-      let chartLine = am4core.create('chartdiv', am4charts.XYChart);
+	  
+      let chartLine = am4core.create(this.chartDiv.nativeElement, am4charts.XYChart);
 
       chartLine.paddingRight = 20;
 
@@ -69,7 +74,7 @@ export class AppComponent {
 
 
       // Bar graph
-      let chartBar = am4core.create('chartBar', am4charts.XYChart);
+      let chartBar = am4core.create(this.chartBar1.nativeElement, am4charts.XYChart);
 
       chartBar.data = [{
         platform: 'Facebook',
