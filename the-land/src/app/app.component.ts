@@ -35,7 +35,7 @@ export class AppComponent {
 @ViewChild('chartDiv', {static: true}) chartDiv: ElementRef<HTMLElement>;
 @ViewChild('chartBar', {static: true}) chartBar1: ElementRef<HTMLElement>;
   constructor(private zone: NgZone) {}
-  
+
 
   ngAfterViewInit() {
     this.zone.runOutsideAngular(() => {
