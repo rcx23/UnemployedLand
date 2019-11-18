@@ -2,11 +2,13 @@ import {Component, ViewChild, NgModule, NgZone, ElementRef} from '@angular/core'
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
+import am4themes_dark from '@amcharts/amcharts4/themes/dark';
 import {MatTabsModule} from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
 
+am4core.useTheme(am4themes_dark);
 am4core.useTheme(am4themes_animated);
 
 export class AppModule {}

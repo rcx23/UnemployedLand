@@ -40,6 +40,7 @@
       margin-bottom: 400px;
     }
 
+
 	  p {
 		margin: 0;
 	  }
@@ -478,25 +479,26 @@
 		<h2 style="color: white">User Engagement</h2>
     <mat-tab-group>
 
-      <mat-tab label="Graph 1">
+      <mat-tab label="User Time">
       	<h2 style="color: grey">User Time Breakdown:</h2>
-	  	<div id="chartTiming" style="width: 100%; height: 400px"></div>
+	  	<div id="chartTiming" style="width: 100%; height: 400px; color: #fff;" ></div>
 	  </mat-tab>
 
-      <mat-tab label="Graph 2">
+      <mat-tab label="Time Spent">
       	<h2 style="color: grey">User Time 2:</h2>
 	  	<h2 style="color: grey">Time Spent</h2>
 		<div id="chartDiv" style="width: 100%; height: 200px"  #chartDiv></div>
 
 	  </mat-tab>
 
-      <mat-tab label="Graph 3">
+      <mat-tab label="Social Media">
       	<h2 style="color: grey">User Time 3:</h2>
 	  	<h2 style="color: grey">User Platforms</h2>
 		<div id="chartBar" style="width: 100%; height: 400px" #chartBar></div>
 	  </mat-tab>
 
     </mat-tab-group>
+
 
 
 
@@ -533,6 +535,7 @@ function openCity(evt, cityName) {
   evt.currentTarget.className += " active";
 }
 </script>
+
 
 </body>
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
