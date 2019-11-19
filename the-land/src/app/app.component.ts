@@ -1,4 +1,4 @@
-import {Component, ViewChild, NgModule, NgZone, ElementRef} from '@angular/core';
+import {Component, ViewChild, NgModule, NgZone, ElementRef, ViewEncapsulation} from '@angular/core';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
@@ -22,7 +22,8 @@ export class AppModule {}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 
 
@@ -43,11 +44,11 @@ export class AppComponent {
     this.zone.runOutsideAngular(() => {
       // Line Chart
 
-      const chartLine = am4core.create(this.chartDiv.nativeElement, am4charts.XYChart);
+      let chartLine = am4core.create(this.chartDiv.nativeElement, am4charts.XYChart);
 
       chartLine.paddingRight = 20;
 
-      const data = [];
+      let data = [];
       let visits = 10;
       for (let i = 1; i < 366; i++) {
         visits += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
@@ -56,21 +57,21 @@ export class AppComponent {
 
       chartLine.data = data;
 
-      const dateAxisLine = chartLine.xAxes.push(new am4charts.DateAxis());
+      let dateAxisLine = chartLine.xAxes.push(new am4charts.DateAxis());
       dateAxisLine.renderer.grid.template.location = 0;
 
-      const valueAxisLine = chartLine.yAxes.push(new am4charts.ValueAxis());
+      let valueAxisLine = chartLine.yAxes.push(new am4charts.ValueAxis());
       valueAxisLine.tooltip.disabled = true;
       valueAxisLine.renderer.minWidth = 35;
 
-      const seriesLine = chartLine.series.push(new am4charts.LineSeries());
+      let seriesLine = chartLine.series.push(new am4charts.LineSeries());
       seriesLine.dataFields.dateX = 'date';
       seriesLine.dataFields.valueY = 'value';
 
       seriesLine.tooltipText = '{valueY.value}';
       chartLine.cursor = new am4charts.XYCursor();
 
-      const scrollbarX = new am4charts.XYChartScrollbar();
+      let scrollbarX = new am4charts.XYChartScrollbar();
       scrollbarX.series.push(seriesLine);
       chartLine.scrollbarX = scrollbarX;
 
@@ -78,7 +79,7 @@ export class AppComponent {
 
 
       // Bar graph
-      const chartBar = am4core.create(this.chartBar1.nativeElement, am4charts.XYChart);
+      let chartBar = am4core.create(this.chartBar1.nativeElement, am4charts.XYChart);
 
       chartBar.data = [{
         platform: 'Facebook',
@@ -109,7 +110,7 @@ export class AppComponent {
         visits: 4
       }];
 
-      const barAxis = chartBar.xAxes.push(new am4charts.CategoryAxis());
+      let barAxis = chartBar.xAxes.push(new am4charts.CategoryAxis());
       barAxis.dataFields.category = 'platform';
       barAxis.renderer.grid.template.location = 0;
       barAxis.renderer.minGridDistance = 30;
@@ -121,22 +122,22 @@ export class AppComponent {
         return dy;
       });
 
-      const valueAxis = chartBar.yAxes.push(new am4charts.ValueAxis());
+      let valueAxis = chartBar.yAxes.push(new am4charts.ValueAxis());
 
-// Create series
-      const seriesBar = chartBar.series.push(new am4charts.ColumnSeries());
+      // Create series
+      let seriesBar = chartBar.series.push(new am4charts.ColumnSeries());
       seriesBar.dataFields.valueY = 'visits';
       seriesBar.dataFields.categoryX = 'platform';
       seriesBar.name = 'Visits';
       seriesBar.columns.template.tooltipText = '{categoryX}: [bold]{valueY}[/]';
       seriesBar.columns.template.fillOpacity = .8;
 
-      const columnTemplate = seriesBar.columns.template;
+      let columnTemplate = seriesBar.columns.template;
       columnTemplate.strokeWidth = 2;
       columnTemplate.strokeOpacity = 1;
 
       // Timing Chart
-      const chartTiming = am4core.create('chartTiming', am4charts.PieChart);
+      let chartTiming = am4core.create('chartTiming', am4charts.PieChart);
 
       chartTiming.data = [{
         time: '0-5 Minutes',
@@ -155,14 +156,14 @@ export class AppComponent {
         value: '37.6%'
       }];
 
-      const timingSeries = chartTiming.series.push(new am4charts.PieSeries());
+      let timingSeries = chartTiming.series.push(new am4charts.PieSeries());
       timingSeries.dataFields.value = 'value';
       timingSeries.dataFields.category = 'time';
       timingSeries.innerRadius = am4core.percent(50);
       timingSeries.ticks.template.disabled = true;
       timingSeries.labels.template.disabled = true;
 
-      const rgm = new am4core.RadialGradientModifier();
+      let rgm = new am4core.RadialGradientModifier();
       rgm.brightnesses.push(-0.8, -0.8, -0.5, 0, - 0.5);
       timingSeries.slices.template.fillModifier = rgm;
       timingSeries.slices.template.strokeModifier = rgm;
@@ -172,6 +173,36 @@ export class AppComponent {
       chartTiming.legend = new am4charts.Legend();
       chartTiming.legend.position = 'right';
 
+      // Concurrent View
+      let concurrentView = am4core.create("concurrentView", am4charts.GaugeChart);
+      concurrentView.hiddenState.properties.opacity = 0;
+
+      concurrentView.innerRadius = -25;
+
+      let axis = concurrentView.xAxes.push(new am4charts.ValueAxis());
+      axis.min = 0;
+      axis.max = 100;
+      axis.strictMinMax = true;
+      axis.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
+      axis.renderer.grid.template.strokeOpacity = 0.3;
+
+      let colorSet = new am4core.ColorSet();
+
+      let range0 = axis.axisRanges.create();
+      range0.value = 0;
+      range0.endValue = 100;
+      range0.axisFill.fillOpacity = 1;
+      range0.axisFill.fill = colorSet.getIndex(0);
+      range0.axisFill.zIndex = - 1;
+
+      let hand = concurrentView.hands.push(new am4charts.ClockHand());
+
+      concurrentView.setTimeout(randomValue, 2000);
+
+      function randomValue() {
+        hand.showValue(Math.random() * 100, 1000, am4core.ease.cubicOut);
+        concurrentView.setTimeout(randomValue, 2000);
+      }
     });
   }
 

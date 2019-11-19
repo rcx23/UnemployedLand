@@ -6,359 +6,13 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<head>
-	<style>
-	  :host {
-		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-		font-size: 14px;
-		color: #333;
-		box-sizing: border-box;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-	  }
-	  body{
-		background-color: #1a1a1a
-	  }
-	  h1,
-	  h2{
-		color:black;
-	  }
-
-	  h3,
-	  h4{
-		width:33.33%;
-	  },
-	  h5,
-	  h6 {
-		margin: 8px 0;
-	  }
-
-    .mat-tab-label{
-      color: white;
-    }
-    mat-tab-group {
-      margin-bottom: 400px;
-    }
-
-
-	  p {
-		margin: 0;
-	  }
-
-	  .spacer {
-		flex: 1;
-	  }
-
-	  .toolbar {
-		height: 60px;
-		margin: -8px;
-		display: flex;
-		align-items: center;
-		background-color: #6b8f8f;
-		color: white;
-		font-weight: 600;
-	  }
-	  .logo{
-		align-items:right;
-	  }
-	  .toolbar img {
-		margin: 0 16px;
-	  }
-
-	  .toolbar #twitter-logo {
-		height: 40px;
-		margin: 0 16px;
-	  }
-
-	  .toolbar #twitter-logo:hover {
-		opacity: 0.8;
-	  }
-
-	  .content {
-		display: flex;
-		margin: 32px auto;
-		padding: 0 16px;
-		max-width: 960px;
-		flex-direction: column;
-		align-items: center;
-	  }
-
-	  .viewer h4{
-		width:max-content;
-	  }
-	  .data{
-		width:33.33%;
-		float:left;
-	  }
-	  @media only screen and (max-width: 800px) {
-	  .col {
-	   width:100%;
-	  }
-	  }
-	  .header{
-		display: flex;
-		margin: 32px auto;
-		padding: 0 16px;
-		max-width: 960px;
-		flex-direction: column;
-		align-items: center;
-	  }
-	  .card-container{
-		display:
-	  }
-	  svg.material-icons {
-		height: 24px;
-		width: auto;
-	  }
-
-	  svg.material-icons:not(:last-child) {
-		margin-right: 8px;
-	  }
-
-	  .card svg.material-icons path {
-		fill: #888;
-	  }
-
-	  .card-container {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		margin-top: 16px;
-	  }
-
-	  .card {
-		border-radius: 4px;
-		border: 1px solid #eee;
-		background-color: #fafafa;
-		height: 40px;
-		width: 200px;
-		margin: 0 8px 16px;
-		padding: 16px;
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		transition: all 0.2s ease-in-out;
-		line-height: 24px;
-	  }
-
-	  .card-container .card:not(:last-child) {
-		margin-right: 0;
-	  }
-
-	  .card.card-small {
-		height: 16px;
-		width: 168px;
-	  }
-
-	  .card-container .card:not(.highlight-card) {
-		cursor: pointer;
-	  }
-
-	  .card-container .card:not(.highlight-card):hover {
-		transform: translateY(-3px);
-		box-shadow: 0 4px 17px rgba(black, 0.35);
-	  }
-
-	  .card-container .card:not(.highlight-card):hover .material-icons path {
-		fill: rgb(105, 103, 103);
-	  }
-
-	  .card.highlight-card {
-		background-color: #1976d2;
-		color: black;
-		font-weight: 600;
-		border: none;
-		width: auto;
-		min-width: 30%;
-		position: relative;
-	  }
-
-	  .card.card.highlight-card span {
-		margin-left: 60px;
-	  }
-
-	  svg#rocket {
-		width: 80px;
-		position: absolute;
-		left: -10px;
-		top: -24px;
-	  }
-
-	  svg#rocket-smoke {
-		height: 100vh;
-		position: absolute;
-		top: 10px;
-		right: 180px;
-		z-index: -10;
-	  }
-
-	  a,
-	  a:visited,
-	  a:hover {
-		color: #1976d2;
-		text-decoration: none;
-	  }
-
-	  a:hover {
-		color: #125699;
-	  }
-
-	  .terminal {
-		position: relative;
-		width: 80%;
-		max-width: 600px;
-		border-radius: 6px;
-		padding-top: 45px;
-		margin-top: 8px;
-		overflow: hidden;
-		background-color: rgb(15, 15, 16);
-	  }
-
-	  .terminal::before {
-		content: "\2022 \2022 \2022";
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 4px;
-		background: rgb(58, 58, 58);
-		color: #c2c3c4;
-		width: 100%;
-		font-size: 2rem;
-		line-height: 0;
-		padding: 14px 0;
-		text-indent: 4px;
-	  }
-
-	  .terminal pre {
-		font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
-		color: white;
-		padding: 0 1rem 1rem;
-		margin: 0;
-	  }
-
-	  .circle-link {
-		height: 40px;
-		width: 40px;
-		border-radius: 40px;
-		margin: 8px;
-		background-color: white;
-		border: 1px solid #eeeeee;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		cursor: pointer;
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-		transition: 1s ease-out;
-	  }
-
-	  .circle-link:hover {
-		transform: translateY(-0.25rem);
-		box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-	  }
-
-	  footer {
-		margin-top: 8px;
-		display: flex;
-		align-items: center;
-		line-height: 20px;
-	  }
-
-	  footer a {
-		display: flex;
-		align-items: center;
-	  }
-
-	  .github-star-badge {
-		color: #24292e;
-		display: flex;
-		align-items: center;
-		font-size: 12px;
-		padding: 3px 10px;
-		border: 1px solid rgba(27,31,35,.2);
-		border-radius: 3px;
-		background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
-		margin-left: 4px;
-		font-weight: 600;
-		font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
-	  }
-
-	  .github-star-badge:hover {
-		background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
-		border-color: rgba(27,31,35,.35);
-		background-position: -.5em;
-	  }
-
-	  .github-star-badge .material-icons {
-		height: 16px;
-		width: 16px;
-		margin-right: 4px;
-	  }
-
-	  svg#clouds {
-		position: fixed;
-		bottom: -160px;
-		left: -230px;
-		z-index: -10;
-		width: 1920px;
-	  }
-
-
-	  /* Responsive Styles */
-	  @media screen and (max-width: 767px) {
-
-		.card-container > *:not(.circle-link) ,
-		.terminal {
-		  width: 100%;
-		}
-
-		.card:not(.highlight-card) {
-		  height: 16px;
-		  margin: 8px 0;
-		}
-
-		.card.highlight-card span {
-		  margin-left: 72px;
-		}
-
-		svg#rocket-smoke {
-		  right: 120px;
-		  transform: rotate(-5deg);
-		}
-	  }
-
-	  @media screen and (max-width: 575px) {
-		svg#rocket-smoke {
-		  display: none;
-		  visibility: hidden;
-		}
-		.card-container{
-
-		  width:100%;
-		}
-	  }
-	.card-container{
-	  color:white;
-	  float:left;
-	  width:33.33%;
-	}
-	.views{
-	  color:white;
-	  float:center;
-	}
-
-	/*making tabs*/
-	body {font-family: Arial;}
-
-
-	</style>
-</head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<body>
+<body style = "background-color: #0F0E1E; color: white; font-family: 'Source Sans Pro', sans-serif;">
 
 	<div class="container">
 		<!-- Toolbar -->
@@ -369,29 +23,28 @@
 		<div class="row">
 
 			<div class="col">
-				<div class="data">
+				<div class="data text-center">
+					<p id = "share-text">Share This Land</p>
 					<div class="social-media">
-						<span>SHARE</span>:
 				     	<!-- Facebook -->
 			    		<a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
-			        		<img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+			        		<img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" class = "share-button"/>
 			    		</a>
 
 					 	<!-- Twitter -->
 					    <a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank">
-					        <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
-					    </a>
-
-					    <!-- Google+ -->
-					    <a href="https://plus.google.com/share?url=https://simplesharebuttons.com" target="_blank">
-					        <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
-					    </a>
-
-					    <!-- LinkedIn -->
-					    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://simplesharebuttons.com" target="_blank">
-					        <img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" />
+					        <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" class = "share-button" id = "twitter-button"/>
 					    </a>
 					</div>
+					<!-- Google+ -->
+					<a href="https://plus.google.com/share?url=https://simplesharebuttons.com" target="_blank">
+					    <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" class = "share-button" id = "google-button"/>
+					</a>
+
+					<!-- LinkedIn -->
+					<a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://simplesharebuttons.com" target="_blank">
+					    <img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" class = "share-button" id = "linkedin-button"/>
+					</a>
 				</div>
 			</div>
 
@@ -401,72 +54,67 @@
 		</div>
 
 		<div class="row">
-			<div class="col">
-				<div class="data">
-					<div class="viewer">
-						<span>put the concurrent graph here</span>
-					</div>
-
-
-				</div>
-			</div>
+			<div class="col" id="concurrentView"></div>
 
 			<div class="col-6">
 				<div class="row">
 					<div class="col">
-						<div class="viewer">
-							<span>Views: 1.3M</span>
+						<div>
+							<p class = "top-text">1.3M</p>
+							<p class = "bottom-text">Views</p>
 						</div>
 					</div>
 					<div class="col">
-						<div class="viewer">
-							<span>Sales: $330K</span>
+						<div>
+							<p class = "top-text">$330K</p>
+							<p class = "bottom-text">Sales</p>
 						</div>
 					</div>
 					<div class="col">
-						<div class="viewer">
-							<span>Engagement: 22%</span>
+						<div>
+							<p class = "top-text">22%</p>
+							<p class = "bottom-text">Engagement</p>
 						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-image">
-						<img id="people" src="assets/images/people.jpg" alt="peoplel" width="60" height="50">
+					<div>
+						<img id="people" src="assets/images/people.jpg" alt="People" width="80" height="80" style = "border-radius: 50%;">
 					</div>
-					<div class="col-6">
-						<div class="viewer">
-							<h4 style="color: grey">128,000</h4>
-							<h4 style="color: grey">total daily visits </h4>
+					<div class = "col">
+						<div class = "text-center" id = "engagement-value">
+							<p>128,675</p>
+						</div>
+						<div class = "text-center" id = "engagement-text">
+							<p>Total Daily Visits</p>
 						</div>
 					</div>
-					<div class="col">
-
-					</div>
+					
 				</div>
 			</div>
 
 			<div class="col">
 				<div class="data">
 					<div class="row">
-						<img id="male" width="50" height="50" src="assets/images/male.jpg"/>
-						<span>78%</span>
+						<img id="male" width="50" height="50" src="assets/images/male.jpg" style = "border-radius: 50%;"/>
+						<span style = "margin-top: 10px; margin-left:10px; font-size: 22px;">78%</span>
 					</div>
 					<div class="row">
-						<img id="female" src="assets/images/female.jpg" width="50" height="50"/>
-						<span>22%</span>
+						<img id="female" src="assets/images/female.jpg" width="50" height="50" style = "border-radius: 50%;"/>
+						<span style = "margin-top: 10px; margin-left:10px; font-size: 22px;">22%</span>
 					</div>
 					<br>
 					<div class="row">
-						<img id="usFlag" src="assets/images/us.jpg" alt="us percentage" width="50" height="40">
-						<span>80%</span>
+						<img id="usFlag" src="assets/images/us.jpg" alt="us percentage" width="60" height="40">
+						<span style= "margin-top: 7%; margin-left: 10px; font-size:18px;">80%</span>
 					</div>
 					<div class="row">
-						<img id="canadaFlag" src="assets/images/canada.jpg" alt="canda percentage" width="50" height="40">
-						<span>8.0%</span>
+						<img id="canadaFlag" src="assets/images/canada.jpg" alt="canada percentage" width="60" height="40" style= "margin-top: 10px;">
+						<span style= "margin-top: 14%; margin-left: 10px; font-size:18px;">8.0%</span>
 					</div>
 					<div class="row">
-						<img id="brazilFlag" src="assets/images/brazil.jpg" alt="brazil percentage" width="50" height="40">
-						<span>12%</span>
+						<img id="brazilFlag" src="assets/images/brazil.jpg" alt="brazil percentage" width="60" height="40" style= "margin-top: 10px;">
+						<span style= "margin-top: 14%; margin-left: 10px; font-size:18px;">12%</span>
 					</div>
 				</div>
 			</div>
@@ -476,24 +124,19 @@
 
 	<div class="user-engagement">
 	  <!-- Resources -->
-		<h2 style="color: white">User Engagement</h2>
-    <mat-tab-group>
+		<h2 style="color: white; text-align: center; margin-top: 70px;">User Engagement</h2>
+    <mat-tab-group mat-stretch-tabs style = "background-color: #0F0E1E;">
 
-      <mat-tab label="User Time">
-      	<h2 style="color: grey">User Time Breakdown:</h2>
+      <mat-tab label="USER TIME">
 	  	<div id="chartTiming" style="width: 100%; height: 400px; color: #fff;" ></div>
 	  </mat-tab>
 
-      <mat-tab label="Time Spent">
-      	<h2 style="color: grey">User Time 2:</h2>
-	  	<h2 style="color: grey">Time Spent</h2>
-		<div id="chartDiv" style="width: 100%; height: 200px"  #chartDiv></div>
+      <mat-tab label="TIME SPENT">
+		<div id="chartDiv" style="width: 100%; height: 400px"  #chartDiv></div>
 
 	  </mat-tab>
 
-      <mat-tab label="Social Media">
-      	<h2 style="color: grey">User Time 3:</h2>
-	  	<h2 style="color: grey">User Platforms</h2>
+      <mat-tab label="SOCIAL MEDIA">
 		<div id="chartBar" style="width: 100%; height: 400px" #chartBar></div>
 	  </mat-tab>
 
