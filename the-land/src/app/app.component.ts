@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
 
+
 am4core.useTheme(am4themes_dark);
 am4core.useTheme(am4themes_animated);
 
@@ -174,16 +175,16 @@ export class AppComponent {
       chartTiming.legend.position = 'right';
 
       // Concurrent View
-      let concurrentView = am4core.create("concurrentView", am4charts.GaugeChart);
+      let concurrentView = am4core.create('concurrentView', am4charts.GaugeChart);
       concurrentView.hiddenState.properties.opacity = 0;
 
       concurrentView.innerRadius = -25;
 
-      let axis = concurrentView.xAxes.push(new am4charts.ValueAxis());
+      let axis = concurrentView.xAxes.push(new am4charts.ValueAxis() as any);
       axis.min = 0;
       axis.max = 100;
       axis.strictMinMax = true;
-      axis.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
+      axis.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor('background');
       axis.renderer.grid.template.strokeOpacity = 0.3;
 
       let colorSet = new am4core.ColorSet();
