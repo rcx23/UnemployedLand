@@ -92,23 +92,38 @@ p {
   text-align: center;
   font-size: 14px;
 }
-
-
-/* For mobile phones: */
-[class*="col-"] {
-  width: 100%;
-}
-@media only screen and (min-width: 313px) {
-  /* For tablets: */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
   .outer-col{width:100%}
   .inner-col{width:100%}
 }
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .outer-col{width:100%}
+  .inner-col{width:100%}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  /* For desktop: */
+  .outer-col{width:100%}
+  .inner-col{width:100%}
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .outer-col{width:33.33%}
+  .inner-col {width:33%;}
+  .inner-col-2{width:50%;float:center;}
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
   .outer-col{width:33.33%}
   .inner-col {width:33%;}
   .inner-col-2{width:50%;float:center;}
 }
+
 /* end of media styling*/
 
 .header{
