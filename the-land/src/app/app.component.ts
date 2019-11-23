@@ -35,9 +35,12 @@ export class AppComponent {
   private chartLine: am4charts.XYChart;
   private chartBar: am4charts.XYChart;
   private chartTiming: am4charts.PieChart;
+  private chartDemo: am4charts.PieChart;
 
 @ViewChild('chartDiv', {static: true}) chartDiv: ElementRef<HTMLElement>;
 @ViewChild('chartBar', {static: true}) chartBar1: ElementRef<HTMLElement>;
+@ViewChild('chartDemo', {static: true}) chartDemo1: ElementRef<HTMLElement>;
+
   constructor(private zone: NgZone) {}
 
 
@@ -77,7 +80,6 @@ export class AppComponent {
       chartLine.scrollbarX = scrollbarX;
 
       this.chartLine = chartLine;
-
 
       // Bar graph
       let chartBar = am4core.create(this.chartBar1.nativeElement, am4charts.XYChart);
@@ -204,6 +206,48 @@ export class AppComponent {
         hand.showValue(Math.random() * 100, 1000, am4core.ease.cubicOut);
         concurrentView.setTimeout(randomValue, 2000);
       }
+
+      // Demographic
+      let chartDemo = am4core.create('chartDemo', am4charts.PieChart);
+      chartDemo.hiddenState.properties.opacity = 0; // this creates initial fade-in
+
+      chartDemo.data = [
+        {
+          country: 'Lithuania',
+          value: 260
+        },
+        {
+          country: 'Czech Republic',
+          value: 230
+        },
+        {
+          country: 'Ireland',
+          value: 200
+        },
+        {
+          country: 'Germany',
+          value: 165
+        },
+        {
+          country: 'Australia',
+          value: 139
+        },
+        {
+          country: 'Austria',
+          value: 128
+        }
+      ];
+
+      let seriesDemo = chartDemo.series.push(new am4charts.PieSeries());
+      seriesDemo.dataFields.value = 'value';
+      seriesDemo.dataFields.radiusValue = 'value';
+      seriesDemo.dataFields.category = 'country';
+      seriesDemo.slices.template.cornerRadius = 6;
+      seriesDemo.colors.step = 3;
+
+      seriesDemo.hiddenState.properties.endAngle = -90;
+
+      chartDemo.legend = new am4charts.Legend();
     });
   }
 
@@ -219,6 +263,10 @@ export class AppComponent {
 
       if (this.chartTiming) {
         this.chartTiming.dispose();
+      }
+
+      if (this.chartDemo) {
+        this.chartDemo.dispose();
       }
     });
   }
