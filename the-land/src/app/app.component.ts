@@ -34,12 +34,12 @@ export class AppComponent {
   title = 'the-land';
   private chartLine: am4charts.XYChart;
   private chartBar: am4charts.XYChart;
+  private chartDemo: am4charts.XYChart;
   private chartTiming: am4charts.PieChart;
-  private chartDemo: am4charts.PieChart;
 
 @ViewChild('chartDiv', {static: true}) chartDiv: ElementRef<HTMLElement>;
 @ViewChild('chartBar', {static: true}) chartBar1: ElementRef<HTMLElement>;
-@ViewChild('chartDemo', {static: true}) chartDemo1: ElementRef<HTMLElement>;
+@ViewChild('chartDemo', {static: true}) chartBarDemo: ElementRef<HTMLElement>
 
   constructor(private zone: NgZone) {}
 
@@ -81,8 +81,9 @@ export class AppComponent {
 
       this.chartLine = chartLine;
 
-      // Bar graph
+      // Bar graphs
       let chartBar = am4core.create(this.chartBar1.nativeElement, am4charts.XYChart);
+      let chartBar2 = am4core.create(this.chartBarDemo.nativeElement, am4charts.XYChart);
 
       chartBar.data = [{
         platform: 'Facebook',
@@ -113,6 +114,21 @@ export class AppComponent {
         visits: 4
       }];
 
+      chartBar2.data = [{
+        demographic: 'America',
+        percentage: 80
+      }, {
+        demographic: 'Canada',
+        percentage: 8
+      }, {
+        demographic: 'Brazil',
+        percentage: 10
+      }, {
+        demographic: 'Other',
+        percentage: 2
+      }];
+
+
       let barAxis = chartBar.xAxes.push(new am4charts.CategoryAxis());
       barAxis.dataFields.category = 'platform';
       barAxis.renderer.grid.template.location = 0;
@@ -125,7 +141,20 @@ export class AppComponent {
         return dy;
       });
 
+      let barAxis2 = chartBar2.xAxes.push(new am4charts.CategoryAxis());
+      barAxis2.dataFields.category = 'demographic';
+      barAxis2.renderer.grid.template.location = 0;
+      barAxis2.renderer.minGridDistance = 30;
+
+      barAxis2.renderer.labels.template.adapter.add('dy', function(dy, target) {
+        if (target.dataItem && target.dataItem.index as Number & 2 == 2) {
+          return dy + 25;
+        }
+        return dy;
+      });
+
       let valueAxis = chartBar.yAxes.push(new am4charts.ValueAxis());
+      let valueAxis2 = chartBar2.yAxes.push(new am4charts.ValueAxis());
 
       // Create series
       let seriesBar = chartBar.series.push(new am4charts.ColumnSeries());
@@ -135,9 +164,20 @@ export class AppComponent {
       seriesBar.columns.template.tooltipText = '{categoryX}: [bold]{valueY}[/]';
       seriesBar.columns.template.fillOpacity = .8;
 
+      let seriesBar2 = chartBar2.series.push(new am4charts.ColumnSeries());
+      seriesBar2.dataFields.valueY = 'percentage';
+      seriesBar2.dataFields.categoryX = 'demographic';
+      seriesBar2.name = 'Percentage';
+      seriesBar2.columns.template.tooltipText = '{categoryX}: [bold]{valueY}[/]';
+      seriesBar2.columns.template.fillOpacity = .8;
+
       let columnTemplate = seriesBar.columns.template;
       columnTemplate.strokeWidth = 2;
       columnTemplate.strokeOpacity = 1;
+
+      let columnTemplate2 = seriesBar2.columns.template;
+      columnTemplate2.strokeWidth = 2;
+      columnTemplate2.strokeOpacity = 1;
 
       // Timing Chart
       let chartTiming = am4core.create('chartTiming', am4charts.PieChart);
@@ -176,6 +216,9 @@ export class AppComponent {
       chartTiming.legend = new am4charts.Legend();
       chartTiming.legend.position = 'right';
 
+
+
+
       // Concurrent View
       let concurrentView = am4core.create('concurrentView', am4charts.GaugeChart);
       concurrentView.hiddenState.properties.opacity = 0;
@@ -206,48 +249,6 @@ export class AppComponent {
         hand.showValue(Math.random() * 100, 1000, am4core.ease.cubicOut);
         concurrentView.setTimeout(randomValue, 2000);
       }
-
-      // Demographic
-      let chartDemo = am4core.create('chartDemo', am4charts.PieChart);
-      chartDemo.hiddenState.properties.opacity = 0; // this creates initial fade-in
-
-      chartDemo.data = [
-        {
-          country: 'Lithuania',
-          value: 260
-        },
-        {
-          country: 'Czech Republic',
-          value: 230
-        },
-        {
-          country: 'Ireland',
-          value: 200
-        },
-        {
-          country: 'Germany',
-          value: 165
-        },
-        {
-          country: 'Australia',
-          value: 139
-        },
-        {
-          country: 'Austria',
-          value: 128
-        }
-      ];
-
-      let seriesDemo = chartDemo.series.push(new am4charts.PieSeries());
-      seriesDemo.dataFields.value = 'value';
-      seriesDemo.dataFields.radiusValue = 'value';
-      seriesDemo.dataFields.category = 'country';
-      seriesDemo.slices.template.cornerRadius = 6;
-      seriesDemo.colors.step = 3;
-
-      seriesDemo.hiddenState.properties.endAngle = -90;
-
-      chartDemo.legend = new am4charts.Legend();
     });
   }
 
