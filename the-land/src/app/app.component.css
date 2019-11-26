@@ -12,33 +12,21 @@ mat-tab-group {
 	padding-bottom: 400px;
 }
 
-/* Styles for tab labels */
-.mat-tab-label {
-    min-width: 25px !important;
-    padding: 5px;
-    background-color: transparent;
-    color: white;
-    font-weight: 700;
-	
-	
-}
-
 /* Styles for the active tab label */
 .mat-tab-label.mat-tab-label-active {
     min-width: 25px !important;
     padding: 5px;
-    background-color: white;
+    background-color: #67B7DC;
     color: black;
     font-weight: 700;
 	font-style:italic;
-	font-family:italic;
-	
 }
 
 /* Styles for the ink bar */
 .mat-ink-bar {
-    background-color: red;
+    background-color: #FB0043;
 }
+
 /* End of tab styling */
 */
 :host {
@@ -133,13 +121,8 @@ p {
 	align-items: center;
 }
 
-#share-text{
-	margin-bottom: 20px;
-}
-
 .share-button{
 	width: 30px;
-	height: auto;
     transition: 0.3s ease;
     cursor: pointer;
 }
@@ -148,56 +131,93 @@ p {
 	transform: scale(1.2, 1.2);
 }
 
-#twitter-button{
-	margin-left: 5px;
-}
-
-#google-button{
-	margin-top: 5px;
-}
-
-#linkedin-button{
-	margin-top: 5px;
-	margin-left: 5px;
-}
-
-.top-text{
-	font-size: 36px;
-	color: #93304C;
+#top-text{
+	font-size: 24px;
+	color: #FB0043;
 	text-align: center;
-	padding-bottom:5px;
 }
 
-.bottom-text{
+#bottom-text{
 	font-size: 16px;
-	margin-top: -5px;
 	text-align: center
 }
 
-#people{
-	display: block;
-	margin-left: 40px;
-	margin-top: 10px;
-	margin-right:4px;
+.people-picture{
+	grid-row: 1 / span 2;
+	grid-column: 2 / span 1;
 }
 
-#engagement-value{
-	margin-top:30px;
-	margin-left:-120px;
-	font-size:56px;
+.people-text{
+	grid-row: 1 / span 2;
+	grid-column: 3/ span 2;
 }
 
-#engagement-text{
-	margin-top:-20px;
-	margin-left:-120px;
+.space{
+	grid-row: 1 / span 2;
+	grid-column: 1 / span 2;
 }
 
-.socialMedia{
-	float:center;
-}
 .inner-col{
 	padding-left:5px;
 	float:center;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: 40px 50px 60px auto;
+	grid-gap: 10px;
+}
+
+.grid-container > div {
+	text-align: center;
+	padding: 20px 0;
+}
+
+.grid-container-2 {
+	display: grid;
+	grid-template-columns: 60px 120px;
+	grid-gap: 0px;
+}
+
+.grid-container-2 div{
+	text-align: center;
+	padding: 0px 0;
+}
+
+.grid-container-3 {
+	display: grid;
+	grid-template-columns: 80px 30px 30px 30px 30px;
+	grid-gap: 10px;
+}
+
+.grid-container-3 div{
+	text-align: center;
+	padding: 20px 0;
+}
+
+.item-1{
+	grid-row: 1/ span 1;
+	grid-column: 1/ span 1;
+}
+
+.item-2{
+	grid-row: 2/ span 1;
+	grid-column: 1/ span 1;
+}
+
+.item-3{
+	grid-row: 1/ span 1;
+	grid-column: 2/ span 1;
+}
+
+.item-4{
+	grid-row: 2/ span 1;
+	grid-column: 2/ span 1;
+}
+
+.item-5{
+	grid-row: 3/ span 1;
+	grid-column: 2/ span 1;
 }
 /* Unused stylings
 #share-buttons img {

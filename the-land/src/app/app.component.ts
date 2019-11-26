@@ -35,11 +35,13 @@ export class AppComponent {
   private chartLine: am4charts.XYChart;
   private chartBar: am4charts.XYChart;
   private chartDemo: am4charts.XYChart;
+  private chartTime: am4charts.XYChart; 
   private chartTiming: am4charts.PieChart;
 
 @ViewChild('chartDiv', {static: true}) chartDiv: ElementRef<HTMLElement>;
 @ViewChild('chartBar', {static: true}) chartBar1: ElementRef<HTMLElement>;
 @ViewChild('chartDemo', {static: true}) chartBarDemo: ElementRef<HTMLElement>
+@ViewChild('chartTime', {static: true}) timeOfDay: ElementRef<HTMLElement>
 
   constructor(private zone: NgZone) {}
 
@@ -84,6 +86,7 @@ export class AppComponent {
       // Bar graphs
       let chartBar = am4core.create(this.chartBar1.nativeElement, am4charts.XYChart);
       let chartBar2 = am4core.create(this.chartBarDemo.nativeElement, am4charts.XYChart);
+      let chartBar3 = am4core.create(this.timeOfDay.nativeElement, am4charts.XYChart);
 
       chartBar.data = [{
         platform: 'Facebook',
@@ -128,6 +131,80 @@ export class AppComponent {
         percentage: 2
       }];
 
+      chartBar3.data = [{
+        time: '8 AM',
+        visits: 8
+      }, {
+        time: '9 AM',
+        visits: 10
+      }, {
+        time: '10 AM',
+        visits: 9
+      }, {
+        time: '11 AM',
+        visits: 11
+      }, {
+        time: '12 PM',
+        visits: 16
+      }, {
+        time: '1 PM',
+        visits: 23
+      }, {
+        time: '2 PM',
+        visits: 21
+      }, {
+        time: '3 PM',
+        visits: 26
+      }, {
+        time: '4 PM',
+        visits: 19
+      }, {
+        time: '5 PM',
+        visits: 29
+      }, {
+        time: '6 PM',
+        visits: 22
+      }, {
+        time: '7 PM',
+        visits: 32
+      }, {
+        time: '8 PM',
+        visits: 19
+      }, {
+        time: '9 PM',
+        visits: 17
+      }, {
+        time: '10 PM',
+        visits: 14
+      }, {
+        time: '11 PM',
+        visits: 13
+      }, {
+        time: '12 AM',
+        visits: 8
+      }, {
+        time: '1 AM',
+        visits: 6
+      }, {
+        time: '2 AM',
+        visits: 5
+      }, {
+        time: '3 AM',
+        visits: 3
+      }, {
+        time: '4 AM',
+        visits: 4
+      }, {
+        time: '5 AM',
+        visits: 0
+      }, {
+        time: '6 AM',
+        visits: 2
+      }, {
+        time: '7 AM',
+        visits: 7
+      }];
+
 
       let barAxis = chartBar.xAxes.push(new am4charts.CategoryAxis());
       barAxis.dataFields.category = 'platform';
@@ -153,8 +230,21 @@ export class AppComponent {
         return dy;
       });
 
+      let barAxis3 = chartBar3.xAxes.push(new am4charts.CategoryAxis());
+      barAxis3.dataFields.category = 'time';
+      barAxis3.renderer.grid.template.location = 0;
+      barAxis3.renderer.minGridDistance = 30;
+
+      barAxis3.renderer.labels.template.adapter.add('dy', function(dy, target) {
+        if (target.dataItem && target.dataItem.index as Number & 2 == 2) {
+          return dy + 25;
+        }
+        return dy;
+      });
+
       let valueAxis = chartBar.yAxes.push(new am4charts.ValueAxis());
       let valueAxis2 = chartBar2.yAxes.push(new am4charts.ValueAxis());
+      let valueAxis3 = chartBar3.yAxes.push(new am4charts.ValueAxis());
 
       // Create series
       let seriesBar = chartBar.series.push(new am4charts.ColumnSeries());
@@ -171,6 +261,13 @@ export class AppComponent {
       seriesBar2.columns.template.tooltipText = '{categoryX}: [bold]{valueY}[/]';
       seriesBar2.columns.template.fillOpacity = .8;
 
+      let seriesBar3 = chartBar3.series.push(new am4charts.ColumnSeries());
+      seriesBar3.dataFields.valueY = 'visits';
+      seriesBar3.dataFields.categoryX = 'time';
+      seriesBar3.name = 'Visits';
+      seriesBar3.columns.template.tooltipText = '{categoryX}: [bold]{valueY}[/]';
+      seriesBar3.columns.template.fillOpacity = .8;
+
       let columnTemplate = seriesBar.columns.template;
       columnTemplate.strokeWidth = 2;
       columnTemplate.strokeOpacity = 1;
@@ -178,6 +275,10 @@ export class AppComponent {
       let columnTemplate2 = seriesBar2.columns.template;
       columnTemplate2.strokeWidth = 2;
       columnTemplate2.strokeOpacity = 1;
+
+      let columnTemplate3 = seriesBar3.columns.template;
+      columnTemplate3.strokeWidth = 2;
+      columnTemplate3.strokeOpacity = 1;
 
       // Timing Chart
       let chartTiming = am4core.create('chartTiming', am4charts.PieChart);
@@ -217,8 +318,6 @@ export class AppComponent {
       chartTiming.legend.position = 'right';
 
 
-
-
       // Concurrent View
       let concurrentView = am4core.create('concurrentView', am4charts.GaugeChart);
       concurrentView.hiddenState.properties.opacity = 0;
@@ -231,15 +330,21 @@ export class AppComponent {
       axis.strictMinMax = true;
       axis.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor('background');
       axis.renderer.grid.template.strokeOpacity = 0.3;
+      axis.renderer.minGridDistance = 10000;
 
       let colorSet = new am4core.ColorSet();
 
       let range0 = axis.axisRanges.create();
       range0.value = 0;
-      range0.endValue = 100;
+      range0.endValue = 23.5;
       range0.axisFill.fillOpacity = 1;
       range0.axisFill.fill = colorSet.getIndex(0);
-      range0.axisFill.zIndex = - 1;
+
+      let range1 = axis.axisRanges.create();
+      range1.value = 23.5;
+      range1.endValue = 100;
+      range1.axisFill.fillOpacity = 1;
+      range1.axisFill.fill = colorSet.getIndex(1);
 
       let hand = concurrentView.hands.push(new am4charts.ClockHand());
 
@@ -249,6 +354,13 @@ export class AppComponent {
         hand.showValue(Math.random() * 100, 1000, am4core.ease.cubicOut);
         concurrentView.setTimeout(randomValue, 2000);
       }
+
+      let title = concurrentView.titles.create();
+      title.text = "Concurrent Viewers";
+      title.fontSize = 14;
+      title.marginBottom = 0;
+
+
     });
   }
 
@@ -268,6 +380,10 @@ export class AppComponent {
 
       if (this.chartDemo) {
         this.chartDemo.dispose();
+      }
+
+      if (this.chartTime) {
+        this.chartTime.dispose();
       }
     });
   }
