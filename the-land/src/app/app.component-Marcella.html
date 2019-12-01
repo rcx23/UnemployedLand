@@ -1,0 +1,214 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!--maps Resources -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/maps.js"></script>
+<script src="https://www.amcharts.com/lib/4/geodata/continentsLow.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<body style = "background-color: #0F0E1E; color: white; font-family: 'Source Sans Pro', sans-serif;">
+
+	<div class="container">
+		<!-- Toolbar -->
+		<div class="header" >
+		  <img id="theland" src="assets/images/theland.png" alt="theland" width="150" height="70">
+		  <h2 style="color: white">Viewer Statistics</h2>
+		</div>
+		<div class="row">
+			<div id = "share-text" class="row-top">Share This Land</div>
+							
+			<div class="row-bottom" id="share-button">
+				<!-- Facebook -->
+				<a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
+					<img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" class = "share-button"/>
+				</a>
+				<!-- Twitter -->
+				<a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank">
+					<img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" class = "share-button" id = "twitter-button"/>
+				</a>
+				<!-- Google+ -->
+				<a href="https://plus.google.com/share?url=https://simplesharebuttons.com" target="_blank">
+					<img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" class = "share-button" id = "google-button"/>
+				</a>
+				<!-- LinkedIn -->
+				<a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://simplesharebuttons.com" target="_blank">
+					<img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" class = "share-button" id = "linkedin-button"/>
+				</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-12 col-sm-12 col-md-12  col-lg-4 col-xl-4 order-3 order-sm-3 order-md-3 order-lg-1 order-xl-1">
+			
+				<div class="share">
+					
+				</div>
+				<div class="bottom">
+					<div class="row">
+						<div class="col" id="concurrentView"></div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-12 col-sm-12 col-md-12  col-lg-4 col-xl-4 order-1 order-sm-1 order-md-1 order-lg-2 order-xl-2 ">
+				<div class="top">
+					<div class="row" >
+						<div class="inner-col">
+							<br>
+							<div class = "row-top">1.3M</div>
+							<div class = "row-bottom">Views</div>
+						</div>
+						<div class="inner-col">
+							<br>
+							<div class = "row-top">$330K</div>
+							<div class = "row-bottom">Sales</div>
+						</div>
+						<div class="inner-col">
+							<br>
+							<div class = "row-top">22%</div>
+							<div class = "row-bottom">Engagement</div>
+						</div>
+					</div>
+				</div>
+				<div class="dailyVisits">
+					<div class="row">
+						<div class="inner-col">
+							<img id="people" src="assets/images/people.jpg" alt="People" width="40" height="30" style = "border-radius: 50%;">
+						</div>
+						<div class="inner-col">
+							<div class = "row-top">128,675</div>
+							<div class = "row-bottom">Total Daily Visits</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 order-2 order-sm-2 order-md-2 order-lg-3 order-xl-3">
+				<div class="aside">
+					
+					<div class="row">
+						<div class="inner-col-2">
+							<div class="row">
+								<img id="male" width="40" height="30" src="assets/images/male.jpg" style = "border-radius: 50%;"/>
+								<span style = "margin-top: 10px; margin-left:10px; font-size: 15px;">78%</span>
+							</div>
+							<div class="row">
+								<img id="female" src="assets/images/female.jpg" width="40" height="30" style = "border-radius: 50%;"/>
+								<span style = "margin-top: 10px; margin-left:10px; font-size: 15px;">22%</span>
+							</div>
+						</div>
+						<div class="inner-col-2">
+							<div class="row">
+								<img id="usFlag" src="assets/images/us.jpg" alt="us percentage" width="40" height="30">
+								<span style = "margin-top: 10px; margin-left:10px; font-size: 15px;">80%</span>
+
+							</div>
+							<div class="row">
+								<img id="canadaFlag" src="assets/images/canada.jpg" alt="canada percentage" width="40" height="30" style= "margin-top: 10px;">
+								<span style = "margin-top: 10px; margin-left:10px; font-size: 15px;">8.0%</span>
+							</div>
+							<div class="row">
+								<img id="brazilFlag" src="assets/images/brazil.jpg" alt="brazil percentage" width="40" height="30" style= "margin-top: 10px;">
+								<span style = "margin-top: 10px; margin-left:10px; font-size: 15px;">10%</span>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+
+	<div class="user-engagement">
+		<!-- Resources -->
+		<h2 style="color: white; text-align: center; margin-top: 70px;">User Engagement</h2>
+		<mat-tab-group mat-stretch-tabs style = "background-color: #0F0E1E;">
+
+			<mat-tab label="DWELL TIME">
+				<div id="chartTiming" style="width: 100%; height: 400px; color: #fff;" ></div>
+			</mat-tab>
+
+			<mat-tab label="VISITORS">
+				<div id="chartDiv" style="width: 100%; height: 400px"  #chartDiv></div>
+			</mat-tab>
+
+			<mat-tab label="PLATFORMS">
+				<div id="chartBar" style="width: 100%; height: 400px" #chartBar></div>
+			</mat-tab>
+
+			<mat-tab label = "DEMOGRAPHIC">
+				<div id="chartDemo" style="width: 100%; height: 400px" #chartDemo></div>
+			</mat-tab>
+			<mat-tab label = "TIME OF DAY">
+				<div id="chartTime" style="width: 100%; height: 400px" #chartTime></div>
+			</mat-tab>
+
+		</mat-tab-group>
+
+
+
+
+
+
+
+		<div class="card-container">
+		</div>
+
+		<!-- Links -->
+		<div class="card-container">
+
+		</div>
+
+		<!-- Footer -->
+		<footer>
+
+		</footer>
+
+	</div>
+
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+
+
+</body>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+
+<router-outlet></router-outlet>
