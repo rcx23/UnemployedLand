@@ -11,6 +11,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!--maps Resources -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/maps.js"></script>
+<script src="https://www.amcharts.com/lib/4/geodata/continentsLow.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 
 <body style = "background-color: #0F0E1E; color: white; font-family: 'Source Sans Pro', sans-serif;">
 
@@ -20,99 +25,113 @@
 		  <img id="theland" src="assets/images/theland.png" alt="theland" width="150" height="70">
 		  <h2 style="color: white">Viewer Statistics</h2>
 		</div>
+		<div class="row">
+			<div id = "share-text" class="row-top">Share This Land</div>
+							
+			<div class="row-bottom" id="share-button">
+				<!-- Facebook -->
+				<a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
+					<img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" class = "share-button"/>
+				</a>
+				<!-- Twitter -->
+				<a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank">
+					<img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" class = "share-button" id = "twitter-button"/>
+				</a>
+				<!-- Google+ -->
+				<a href="https://plus.google.com/share?url=https://simplesharebuttons.com" target="_blank">
+					<img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" class = "share-button" id = "google-button"/>
+				</a>
+				<!-- LinkedIn -->
+				<a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://simplesharebuttons.com" target="_blank">
+					<img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" class = "share-button" id = "linkedin-button"/>
+				</a>
+			</div>
+		</div>
 
 		<div class="row">
-			<div class="outer-col">
-				<div class="row">
-					<div class="col" id="concurrentView"></div>
+			<div class="col-12 col-sm-12 col-md-12  col-lg-4 col-xl-4 order-3 order-sm-3 order-md-3 order-lg-1 order-xl-1">
+			
+				<div class="share">
+					
 				</div>
-
-			</div>
-
-			<div class="outer-col">
-				<div class="row">
-					<div class="inner-col">
-						<br>
-						<div class = "row-top" id = "top-text">1.3M</div>
-						<div class = "row-bottom" id = "bottom-text">Views</div>
-					</div>
-					<div class="inner-col">
-						<br>
-						<div class = "row-top" id = "top-text">$330K</div>
-						<div class = "row-bottom" id = "bottom-text">Sales</div>
-					</div>
-					<div class="inner-col">
-						<br>
-						<div class = "row-top" id = "top-text">22%</div>
-						<div class = "row-bottom" id = "bottom-text">Engagement</div>
-					</div>
-				</div>
-
-				<div class="grid-container">
-					<div class="space"></div>
-					<div class="people-picture">
-						<img src="assets/images/people.jpg" alt="People" width="80" height="80" style = "border-radius: 50%; margin-left: auto; margin-right: auto; display: block;">
-					</div>
-					<div class="people-text">
-						<div class = "row-top" style = "font-size:32px;">128,675</div>
-						<div class = "row-bottom">Total Daily Visits</div>
+				<div class="bottom">
+					<div class="row">
+						<div class="col" id="concurrentView"></div>
 					</div>
 				</div>
 
 			</div>
 
-			<div class= "inner-col">
-				<div class = "grid-container-3">
-					<div>
-						<span>SHARE:</span>
+			<div class="col-12 col-sm-12 col-md-12  col-lg-4 col-xl-4 order-1 order-sm-1 order-md-1 order-lg-2 order-xl-2 ">
+				<div class="top">
+					<div class="row" >
+						<div class="inner-col">
+							<br>
+							<div class = "row-top">1.3M</div>
+							<div class = "row-bottom">Views</div>
+						</div>
+						<div class="inner-col">
+							<br>
+							<div class = "row-top">$330K</div>
+							<div class = "row-bottom">Sales</div>
+						</div>
+						<div class="inner-col">
+							<br>
+							<div class = "row-top">22%</div>
+							<div class = "row-bottom">Engagement</div>
+						</div>
 					</div>
-					<div>
-						<a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
-						<img src="assets/images/fb.jpg" alt="Facebook" class = "share-button"/>
-						</a>
-					</div>
-					<div>
-						<a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank">
-						<img src="assets/images/twitter.jpg" alt="Twitter" class = "share-button"/>
-						</a>
-					</div>
-					<div>
-						<a href="https://plus.google.com/share?url=https://simplesharebuttons.com" target="_blank">
-						<img src="assets/images/g.jpg" alt="Google" class = "share-button"/>
-						</a>
-					</div>
-					<div>
-						<a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://simplesharebuttons.com" target="_blank">
-						<img src="assets/images/in.jpg" alt="LinkedIn" class = "share-button"/>
-						</a>
+				</div>
+				<div class="dailyVisits">
+					<div class="row">
+						<div class="inner-col">
+							<img id="people" src="assets/images/people.jpg" alt="People" width="40" height="30" style = "border-radius: 50%;">
+						</div>
+						<div class="inner-col">
+							<div class = "row-top">128,675</div>
+							<div class = "row-bottom">Total Daily Visits</div>
+						</div>
 					</div>
 				</div>
 
+			</div>
+
+			<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 order-2 order-sm-2 order-md-2 order-lg-3 order-xl-3">
+				<div class="aside">
+					
+					<div class="row">
+						<div class="inner-col-2">
+							<div class="row">
+								<img id="male" width="40" height="30" src="assets/images/male.jpg" style = "border-radius: 50%;"/>
+								<span style = "margin-top: 10px; margin-left:10px; font-size: 15px;">78%</span>
+							</div>
+							<div class="row">
+								<img id="female" src="assets/images/female.jpg" width="40" height="30" style = "border-radius: 50%;"/>
+								<span style = "margin-top: 10px; margin-left:10px; font-size: 15px;">22%</span>
+							</div>
+						</div>
+						<div class="inner-col-2">
+							<div class="row">
+								<img id="usFlag" src="assets/images/us.jpg" alt="us percentage" width="40" height="30">
+								<span style = "margin-top: 10px; margin-left:10px; font-size: 15px;">80%</span>
+
+							</div>
+							<div class="row">
+								<img id="canadaFlag" src="assets/images/canada.jpg" alt="canada percentage" width="40" height="30" style= "margin-top: 10px;">
+								<span style = "margin-top: 10px; margin-left:10px; font-size: 15px;">8.0%</span>
+							</div>
+							<div class="row">
+								<img id="brazilFlag" src="assets/images/brazil.jpg" alt="brazil percentage" width="40" height="30" style= "margin-top: 10px;">
+								<span style = "margin-top: 10px; margin-left:10px; font-size: 15px;">10%</span>
+							</div>
+						</div>
+					</div>
 
 
-				<div class = "grid-container-2">
-					<div class="item-1">
-						<img id="male" width="40" height="40" src="assets/images/male.jpg" style = "border-radius: 50%; margin-left: 10px;"/>
-						<span style = "margin-top: 10px; margin-left:10px; font-size: 15px;">78%</span>
-					</div>
-					<div class="item-2">
-						<img id="female" src="assets/images/female.jpg" width="40" height="40" style = "border-radius: 50%; margin-left: 10px;"/>
-						<span style = "margin-top: 10px; margin-left:10px; font-size: 15px;">22%</span>
-					</div>
-					<div class="item-3">
-						<img id="usFlag" src="assets/images/us.jpg" alt="us percentage" width="45" height="30">
-						<span style = "margin-top: 10px; margin-left:10px; font-size: 15px;">80%</span>
-					</div>
-					<div class="item-4">
-						<img id="canadaFlag" src="assets/images/canada.jpg" alt="canada percentage" width="45" height="30">
-						<span style = "margin-top: 10px; margin-left:10px; font-size: 15px;">8.0%</span>
-					</div>
-					<div class="item-5">
-						<img id="brazilFlag" src="assets/images/brazil.jpg" alt="brazil percentage" width="45" height="30">
-						<span style = "margin-top: 10px; margin-left:10px; font-size: 15px;">10%</span>
-					</div>
 				</div>
 			</div>
+
+
 		</div>
 	</div>
 
@@ -132,6 +151,7 @@
 			<mat-tab label="PLATFORMS">
 				<div id="chartBar" style="width: 100%; height: 400px" #chartBar></div>
 			</mat-tab>
+
 			<mat-tab label = "DEMOGRAPHIC">
 				<div id="chartDemo" style="width: 100%; height: 400px" #chartDemo></div>
 			</mat-tab>
