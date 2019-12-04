@@ -49,7 +49,9 @@ mat-tab-group {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
+h2{
+	text-align:center;
+}
 h4{
 	width:33.33%;
 }
