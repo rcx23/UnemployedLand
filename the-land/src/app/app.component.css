@@ -51,8 +51,17 @@ mat-tab-group {
 h2{
 	text-align:center;
 }
+
+h3{
+	text-shadow: 0 0 3px #cc0052;
+}
+
 h4{
 	width:33.33%;
+}
+
+h5{
+	color: #cc0052
 }
 
 h6 {

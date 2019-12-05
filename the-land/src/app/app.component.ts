@@ -48,7 +48,7 @@ export class AppComponent {
 
   ngAfterViewInit() {
     this.zone.runOutsideAngular(() => {
-      // Line Chart
+      // ---------------------------------------------------------------------Line Chart---------------------------------------------------------------------
 
       let chartLine = am4core.create(this.chartDiv.nativeElement, am4charts.XYChart);
 
@@ -83,7 +83,7 @@ export class AppComponent {
 
       this.chartLine = chartLine;
 
-      // Bar graphs
+      // -----------------------------------------------------------------------Bar graphs--------------------------------------------------------------------
       let chartBar = am4core.create(this.chartBar1.nativeElement, am4charts.XYChart);
       let chartBar2 = am4core.create(this.chartBarDemo.nativeElement, am4charts.XYChart);
       let chartBar3 = am4core.create(this.timeOfDay.nativeElement, am4charts.XYChart);
@@ -280,7 +280,7 @@ export class AppComponent {
       columnTemplate3.strokeWidth = 2;
       columnTemplate3.strokeOpacity = 1;
 
-      // Timing Chart
+      // -----------------------------------------------------------Dwell Time Chart-------------------------------------------------
       let chartTiming = am4core.create('chartTiming', am4charts.PieChart);
 
       chartTiming.data = [{
@@ -318,7 +318,7 @@ export class AppComponent {
       chartTiming.legend.position = 'right';
 
 
-      // Concurrent View
+      // -------------------------------------------------------------------Concurrent View-------------------------------------------------------------------
       let concurrentView = am4core.create('concurrentView', am4charts.GaugeChart);
       concurrentView.hiddenState.properties.opacity = 0;
 
