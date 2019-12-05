@@ -8,27 +8,28 @@
     font-weight: 700;
 }
 
+
 mat-tab-group {
-	padding-bottom: 400px;
+	padding-bottom: 10px;
 }
 
 /* Styles for the active tab label */
 .mat-tab-label.mat-tab-label-active {
-    min-width: 25px !important;
-    padding: 5px;
-    background-color: #67B7DC;
-    color: black;
-    font-weight: 700;
-	font-style:italic;
+  min-width: 25px !important;
+  padding: 5px;
+  background-color: #67B7DC;
+  color: black;
+  font-weight: 700;
+  font-style:italic;
 }
 
 /* Styles for the ink bar */
 .mat-ink-bar {
-    background-color: #FB0043;
+  background-color: #FB0043;
 }
 
 /* End of tab styling */
-*/
+
 :host {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	font-size: 14px;
@@ -54,8 +55,6 @@ p {
 * {
   box-sizing: border-box;
 }
-
-
 
 [class*="col-"] {
   float: left;
@@ -97,14 +96,14 @@ p {
 @media only screen and (min-width: 768px) {
   .outer-col{width:100%}
   .inner-col{width:100%}
-} 
+}
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .outer-col{width:33.33%}
   .inner-col {width:33%;}
   .inner-col-2{width:50%;float:center;}
-} 
+}
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
@@ -170,7 +169,7 @@ p {
 
 .grid-container > div {
 	text-align: center;
-	padding: 20px 0;
+	padding: 20px;
 }
 
 .grid-container-2 {
@@ -192,7 +191,7 @@ p {
 
 .grid-container-3 div{
 	text-align: center;
-	padding: 20px 0;
+	padding: 20px;
 }
 
 .item-1{

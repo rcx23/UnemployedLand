@@ -35,13 +35,13 @@ export class AppComponent {
   private chartLine: am4charts.XYChart;
   private chartBar: am4charts.XYChart;
   private chartDemo: am4charts.XYChart;
-  private chartTime: am4charts.XYChart; 
+  private chartTime: am4charts.XYChart;
   private chartTiming: am4charts.PieChart;
 
 @ViewChild('chartDiv', {static: true}) chartDiv: ElementRef<HTMLElement>;
 @ViewChild('chartBar', {static: true}) chartBar1: ElementRef<HTMLElement>;
 @ViewChild('chartDemo', {static: true}) chartBarDemo: ElementRef<HTMLElement>
-@ViewChild('chartTime', {static: true}) timeOfDay: ElementRef<HTMLElement>
+@ViewChild('chartTime', {static: true}) timeOfDay: ElementRef<HTMLElement>;
 
   constructor(private zone: NgZone) {}
 
