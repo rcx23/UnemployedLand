@@ -7,10 +7,33 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 am4core.useTheme(am4themes_dark);
 am4core.useTheme(am4themes_animated);
+
+@Injectable()
+export class GetService {
+  baseURL = 'https://the.land/m/r/app/HDS.ANALYTICS/api/hds/analytics/event/ViewOfSession';
+  constructor(private http: HttpClient) {}
+
+  postRequestSender() {
+    const headers = new HttpHeaders()
+      .set('accept', 'application/json')
+      .set('X-APP-KEY', 'gRUo6SR5ZiCwE8q51nofkcvuz1v9miRT')
+      .set('Content-Type', 'multipart/form-data');
+
+    const bodyData = {
+      hhlAnalyticsSession : 'sort=id, order=desc, p=1'
+    };
+
+    return this.http.post(this.baseURL, bodyData, {headers}).subscribe(data => console.log(data));
+    // return this.http.post(this.baseURL, bodyData, {headers}).subscribe(res => res.json);
+  }
+}
+
 
 export class AppModule {}
 @NgModule({
